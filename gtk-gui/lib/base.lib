@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+
+import gi
+gi.require_version("Gtk","3.0")
+from gi.repository import Gtk , Gdk
+from os import system
+
+id = "id"
+value = "value"
+onClick = "onClick"
+title = "title"
+className = "className"
+width = "width"
+height = "height"
+spacing = "spacing"
+orientation = "orientatio" # Gtk.Orientation.(VERTICAL , HORIZONTAL)
+visible = "visible" # boolean
+xalign = "xalign"  #float
+yalign = "yalign"
+padding = "padding"
+opacity = "opacity"
+placeholder = "placeholder"
+#package child in box
+expand = "expand" # boolean
+fill = "fill" # boolean
+position = "position"
+# window
+decorated = "decorated"
+transparent = "transparent"
+# eventos
+onClick = "onClick"
+onChange = "onChange"
+onSubmit = "onSubmit"
+
+
+##methods##
+
+##css##
+
+##html##
+
+Gtk.main()

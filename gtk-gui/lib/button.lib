@@ -1,0 +1,25 @@
+def button(props,text):
+
+    btn = Gtk.Button()
+    if xalign in props:
+        btn.set_xalign(props[xalign])
+    if yalign in props:
+        btn.set_yalign(props[yalign])
+    if opacity in props:
+        btn.set_opacity(props[opacity])
+    if visible in props:         
+        btn.set_visible(props[visible])
+    if text != None:
+        btn.set_label(text)
+    if id in props:
+        btn.set_name(props[id])
+    if className in props:
+        btn.get_style_context().add_class(props[className])
+    if width in props and height in props:
+        btn.set_size_request(props[width], props[height])
+    if onClick in props:
+        if type(props[onClick]) == type(""):
+            btn.connect("clicked",lambda x:system("./"+props[onClick]))
+        else:
+            btn.connect("clicked",props[onClick])
+    return btn

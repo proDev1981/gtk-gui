@@ -1,0 +1,45 @@
+def win(props,body):
+
+    global colors
+
+    def draw(widget,cr):
+        Gdk.cairo_set_source_rgba(cr, Gdk.RGBA(red= colors[0],green= colors[1],blue= colors[2],alpha= colors[3]))
+        cr.paint()
+        return False
+    def getTrasparent(str):
+        colors = str.split(",")
+        cont = 0
+        for color in colors:
+            colors[cont] = float(color)
+            cont = cont+1
+        return colors
+
+    win = Gtk.Window()
+
+    if position in props:
+        if props[position] == "center":
+            win.set_position(Gtk.WindowPosition.CENTER)
+        if props[position] == "mouse":
+             win.set_position(Gtk.WindowPosition.MOUSE)
+
+    if transparent in props:
+        colors = getTrasparent(props[transparent])
+        win.set_app_paintable(True)
+        screen = win.get_screen()
+        visual = screen.get_rgba_visual()
+        win.set_visual(visual)
+        win.connect('draw', draw )
+    if opacity in props:
+        win.set_opacity(props[opacity])
+    if decorated in props:
+        win.set_decorated(props[decorated])
+    if className in props:
+        win.get_style_context().add_class(props[className])
+    if id in props:
+        win.set_name(props[id])
+    if title in props:
+        win.set_title(props[title])
+    if body != None:
+        win.add(body)
+    win.show_all()
+    return win

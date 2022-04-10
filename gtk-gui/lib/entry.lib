@@ -1,0 +1,43 @@
+def entry(props):
+
+    def submit(e):
+        if "echo" in props[onSubmit]:
+            system(props[onSubmit] + f" {e.get_text()}")
+        else:
+            system("./"+props[onSubmit] + f" {e.get_text()}")
+    def change(e):
+        if "echo" in props[onChange]:
+            system(props[onChange] + f" {e.get_text()}")
+        else:
+            system("./"+props[onChange] + f" {e.get_text()}")
+
+    entry=Gtk.Entry()
+    if placeholder in props:
+        entry.set_placeholder_text(props[placeholder])
+    if xalign in props:
+        entry.set_xalign(props[xalign])
+    if yalign in props:
+        entry.set_yalign(props[yalign])
+    if opacity in props:
+        entry.set_opacity(props[opacity])
+    if visible in props:         
+        entry.set_visible(props[visible])
+    if  value in props:
+        entry.set_entry(props[value])
+    if width in props and height in props:
+        entry.set_size_request(props[width],props[height])
+    if className in props:
+        entry.get_style_context().add_class(props[className])
+    if id in props:
+        entry.set_name(props[id]) 
+    if onSubmit in props:
+        if type(props[onSubmit]) == type(""):
+            entry.connect("activate",submit)
+        else:
+            entry.connect("activate",props[onSubmit])
+    if onChange in props:
+        if type(props[onSubmit]) == type(""):
+            entry.connect("changed",change)
+        else:
+            entry.connect("changed",props[onChange])
+    return entry

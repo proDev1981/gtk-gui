@@ -1,0 +1,20 @@
+def label(props,text):
+    label=Gtk.Label()
+    if xalign in props:
+        label.set_xalign(props[xalign])
+    if yalign in props:
+        label.set_yalign(props[yalign])
+    if opacity in props:
+        label.set_opacity(props[opacity])
+    if visible in props:         
+        label.set_visible(props[visible])
+    if text != None:
+        if type(text) == type(""):
+            label.set_label(text)
+    if width in props and height in props:
+        label.set_size_request(props[width],props[height])
+    if className in props:
+        label.get_style_context().add_class(props[className])
+    if id in props:
+        label.set_name(props[id]) 
+    return label

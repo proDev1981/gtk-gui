@@ -1,0 +1,26 @@
+def box(props,childs):
+    
+    fi = False
+    exp = False
+    pos = 0
+    if expand in props:
+        exp = props[expand]
+    if fill in props:
+        fi = props[fill]
+    if position in props:
+        pos = props[position]
+    box = Gtk.Box()
+    if orientation in props:
+        if props[orientation] == "vertical":
+            box.set_orientation(Gtk.Orientation.VERTICAL)
+        elif props[orientation] == "horizontal":
+            box.set_orientation(Gtk.Orientation.HORIZONTAL)
+    if spacing in props:
+        box.set_spacing(props[spacing])
+    if id in props:
+        box.set_name(props[id])
+    if className in props:
+        box.get_style_context().add_class(props[className])
+    for child in childs:
+        box.pack_start(child,exp,fi,pos)
+    return box
